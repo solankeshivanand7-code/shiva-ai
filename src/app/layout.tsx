@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingDoodles from "@/components/3d/FloatingDoodles";
+import AppProviders from "@/components/layout/AppProviders";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -40,11 +40,10 @@ export default function RootLayout({
         {/* Ambient floating doodle universe in background */}
         <FloatingDoodles />
 
-        {/* Global floating navbar */}
-        <Navbar />
-
-        {/* Main Content Area */}
-        <main className="flex-1 relative z-10">{children}</main>
+        {/* Global App Providers (Navbar + Global Auth Modal) */}
+        <AppProviders>
+          <main className="flex-1 relative z-10">{children}</main>
+        </AppProviders>
 
         {/* Global Footer */}
         <Footer />
